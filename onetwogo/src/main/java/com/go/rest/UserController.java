@@ -21,7 +21,8 @@ public class UserController {
 	@RequestMapping("/user")
 	HashMap test(String id) {
 		System.out.println("=====Called User=====" + id);
-
+		//Test User Controller
+		int i = 0;
 		User test = userService.test(id);
 		
 		HashMap map = new HashMap();
