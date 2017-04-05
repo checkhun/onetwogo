@@ -1,0 +1,5 @@
+.gradle/
+.settings/gradle/
+db/file
+bin/
+build/
