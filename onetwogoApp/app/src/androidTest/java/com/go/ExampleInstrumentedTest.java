@@ -1,4 +1,4 @@
-package com.plt;
+package com.go;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

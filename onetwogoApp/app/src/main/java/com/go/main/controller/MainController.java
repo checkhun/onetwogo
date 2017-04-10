@@ -1,12 +1,12 @@
-package com.plt.main.controller;
+package com.go.main.controller;
 
 import android.app.Dialog;
 import android.content.Context;
 
 import com.google.gson.Gson;
-import com.plt.R;
-import com.plt.common.Interface;
-import com.plt.common.ServerResponse;
+import com.go.R;
+import com.go.common.Interface;
+import com.go.common.ServerResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;

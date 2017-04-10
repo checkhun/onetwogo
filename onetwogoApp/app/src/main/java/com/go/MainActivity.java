@@ -1,4 +1,4 @@
-package com.plt;
+package com.go;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-import com.plt.main.controller.MainController;
+import com.go.main.controller.MainController;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

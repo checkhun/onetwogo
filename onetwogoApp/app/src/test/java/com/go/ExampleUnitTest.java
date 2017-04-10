@@ -1,4 +1,4 @@
-package com.plt;
+package com.go;
 
 import org.junit.Test;
 

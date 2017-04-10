@@ -1,4 +1,4 @@
-package com.plt.main.model;
+package com.go.main.model;
 
 public class MainDataSet {
 	

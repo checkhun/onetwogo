@@ -1,4 +1,4 @@
-package com.plt.common;
+package com.go.common;
 
 import java.util.HashMap;
 
