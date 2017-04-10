@@ -3,3 +3,5 @@
 db/file
 bin/
 build/
+.idea/
+*.iml
