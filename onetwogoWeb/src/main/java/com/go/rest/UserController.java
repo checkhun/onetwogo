@@ -30,6 +30,8 @@ public class UserController {
 //			map.put("message", test.getUserId()+" / "+test.getUserClsf()+" / "+test.getUserCert()+" / "+test.getRegDt());
 //		}
 		
+		map.put("1", "1");
+		
 		return map;
 	}
 	
