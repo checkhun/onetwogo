@@ -21,16 +21,17 @@ public class UserController {
 	@RequestMapping("/user")
 	HashMap test(String id) {
 		System.out.println("=====Called User=====" + id);
+		id = "checkhun";
 
-//		User test = userService.test(id);
+		User test = userService.test(id);
 		
 		HashMap map = new HashMap();
-//		if(test != null) {
-//			System.out.println(test.getUserId());
-//			map.put("message", test.getUserId()+" / "+test.getUserClsf()+" / "+test.getUserCert()+" / "+test.getRegDt());
-//		}
+		if(test != null) {
+			System.out.println(test.getUserId());
+			map.put("message", test.getUserId()+" / "+test.getUserClsf()+" / "+test.getUserCert()+" / "+test.getRegDt());
+		}
 		
-		map.put("1", "1");
+//		map.put("1", "1");
 		
 		return map;
 	}

@@ -52,6 +52,8 @@
 	
 	var _reactBootstrap = __webpack_require__(1);
 	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -61,6 +63,7 @@
 	var React = __webpack_require__(86);
 	var ReactDOM = __webpack_require__(153);
 	var client = __webpack_require__(438);
+	var BUTTONS = ['Default', 'Primary', 'Success', 'Info', 'Warning', 'Danger'];
 	
 	// end::vars[]
 	
@@ -117,16 +120,16 @@
 																																	'tr',
 																																	null,
 																																	React.createElement(
-																																					'th',
+																																					'td',
 																																					null,
 																																					'12GO'
 																																	),
 																																	React.createElement(
-																																					'th',
+																																					'td',
 																																					null,
 																																					React.createElement(
 																																									_reactBootstrap.SplitButton,
-																																									{ title: '\uD14C\uB9C8\uC120\uD0DD', className: 'split-btn-200', id: 'dropdown-size-large' },
+																																									{ id: 'test1', title: '\uD14C\uB9C8\uC120\uD0DD', className: 'split-btn-150' },
 																																									React.createElement(
 																																													_reactBootstrap.MenuItem,
 																																													{ eventKey: '1' },
@@ -145,11 +148,11 @@
 																																					)
 																																	),
 																																	React.createElement(
-																																					'th',
-																																					{ width: '500px' },
+																																					'td',
+																																					null,
 																																					React.createElement(
 																																									_reactBootstrap.SplitButton,
-																																									{ title: '\uC9C0\uC5ED\uC120\uD0DD', className: 'split-btn-200', id: 'dropdown-size-large' },
+																																									{ id: 'test2', title: '\uC9C0\uC5ED\uC120\uD0DD', className: 'split-btn-150' },
 																																									React.createElement(
 																																													_reactBootstrap.MenuItem,
 																																													{ eventKey: '1' },
@@ -173,22 +176,23 @@
 																																					)
 																																	),
 																																	React.createElement(
-																																					'th',
+																																					'td',
 																																					null,
 																																					React.createElement(
 																																									_reactBootstrap.Button,
 																																									{ bsStyle: 'primary' },
-																																									'My Page'
+																																									'\uC870\uD68C'
 																																					)
 																																	),
 																																	React.createElement(
-																																					'th',
-																																					null,
-																																					React.createElement(
-																																									_reactBootstrap.Button,
-																																									{ bsStyle: 'primary' },
-																																									'\uB85C\uADF8\uC544\uC6C3'
-																																					)
+																																					'td',
+																																					{ className: 'td-small' },
+																																					'My Page'
+																																	),
+																																	React.createElement(
+																																					'td',
+																																					{ className: 'td-small' },
+																																					'\uB85C\uADF8\uC544\uC6C3'
 																																	)
 																													)
 																									)
@@ -204,13 +208,25 @@
 	var Content = function (_React$Component3) {
 					_inherits(Content, _React$Component3);
 	
-					function Content() {
+					function Content(props) {
 									_classCallCheck(this, Content);
 	
-									return _possibleConstructorReturn(this, (Content.__proto__ || Object.getPrototypeOf(Content)).apply(this, arguments));
+									var _this3 = _possibleConstructorReturn(this, (Content.__proto__ || Object.getPrototypeOf(Content)).call(this, props));
+	
+									_this3.state = { users: [] };
+									return _this3;
 					}
 	
 					_createClass(Content, [{
+									key: 'componentDidMount',
+									value: function componentDidMount() {
+													var _this4 = this;
+	
+													client({ method: 'GET', path: '/api/users' }).done(function (response) {
+																	_this4.setState({ users: response.entity._embedded.users });
+													});
+									}
+					}, {
 									key: 'render',
 									value: function render() {
 													return React.createElement(
@@ -220,56 +236,7 @@
 																	React.createElement(
 																					'div',
 																					{ className: 'content-right' },
-																					React.createElement(
-																									_reactBootstrap.Table,
-																									{ responsive: true },
-																									React.createElement(
-																													'tbody',
-																													null,
-																													React.createElement(
-																																	'tr',
-																																	{ className: 'tr-100' },
-																																	React.createElement(
-																																					'td',
-																																					null,
-																																					'\uC0AC\uC9C4'
-																																	),
-																																	React.createElement(
-																																					'td',
-																																					null,
-																																					'\uC124\uBA85'
-																																	)
-																													),
-																													React.createElement(
-																																	'tr',
-																																	{ className: 'tr-100' },
-																																	React.createElement(
-																																					'td',
-																																					null,
-																																					'\uC0AC\uC9C4'
-																																	),
-																																	React.createElement(
-																																					'td',
-																																					null,
-																																					'\uC124\uBA85'
-																																	)
-																													),
-																													React.createElement(
-																																	'tr',
-																																	{ className: 'tr-100' },
-																																	React.createElement(
-																																					'td',
-																																					null,
-																																					'\uC0AC\uC9C4'
-																																	),
-																																	React.createElement(
-																																					'td',
-																																					null,
-																																					'\uC124\uBA85'
-																																	)
-																													)
-																									)
-																					)
+																					React.createElement(UserList, { users: this.state.users })
 																	)
 													);
 									}
@@ -278,8 +245,84 @@
 					return Content;
 	}(React.Component);
 	
-	var Filter = function (_React$Component4) {
-					_inherits(Filter, _React$Component4);
+	var UserList = function (_React$Component4) {
+					_inherits(UserList, _React$Component4);
+	
+					function UserList() {
+									_classCallCheck(this, UserList);
+	
+									return _possibleConstructorReturn(this, (UserList.__proto__ || Object.getPrototypeOf(UserList)).apply(this, arguments));
+					}
+	
+					_createClass(UserList, [{
+									key: 'render',
+									value: function render() {
+													var users = this.props.users.map(function (user) {
+																	return React.createElement(User, { key: user._links.self.href, user: user });
+													});
+													return React.createElement(
+																	_reactBootstrap.Table,
+																	{ responsive: true },
+																	React.createElement(
+																					'tbody',
+																					null,
+																					React.createElement(
+																									'tr',
+																									{ className: 'tr-100' },
+																									React.createElement(
+																													'td',
+																													null,
+																													'\uC0AC\uC9C4'
+																									),
+																									React.createElement(
+																													'td',
+																													null,
+																													'\uC124\uBA85'
+																									)
+																					),
+																					users
+																	)
+													);
+									}
+					}]);
+	
+					return UserList;
+	}(React.Component);
+	
+	var User = function (_React$Component5) {
+					_inherits(User, _React$Component5);
+	
+					function User() {
+									_classCallCheck(this, User);
+	
+									return _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).apply(this, arguments));
+					}
+	
+					_createClass(User, [{
+									key: 'render',
+									value: function render() {
+													return React.createElement(
+																	'tr',
+																	{ className: 'tr-100' },
+																	React.createElement(
+																					'td',
+																					null,
+																					this.props.user.regDt
+																	),
+																	React.createElement(
+																					'td',
+																					null,
+																					this.props.user.userClsf
+																	)
+													);
+									}
+					}]);
+	
+					return User;
+	}(React.Component);
+	
+	var Filter = function (_React$Component6) {
+					_inherits(Filter, _React$Component6);
 	
 					function Filter() {
 									_classCallCheck(this, Filter);
@@ -298,7 +341,7 @@
 																					null,
 																					React.createElement(
 																									_reactBootstrap.SplitButton,
-																									{ className: 'split-btn-100', title: '\uBA54\uB274', id: 'dropdown-size-large' },
+																									_defineProperty({ id: 'test', className: 'split-btn-150', title: '\uBA54\uB274' }, 'id', 'dropdown-size-large'),
 																									React.createElement(
 																													_reactBootstrap.MenuItem,
 																													{ eventKey: '1' },
@@ -345,8 +388,8 @@
 					return Filter;
 	}(React.Component);
 	
-	var Footer = function (_React$Component5) {
-					_inherits(Footer, _React$Component5);
+	var Footer = function (_React$Component7) {
+					_inherits(Footer, _React$Component7);
 	
 					function Footer() {
 									_classCallCheck(this, Footer);
@@ -378,7 +421,7 @@
 	
 	ReactDOM.render(React.createElement(App, null), document.getElementById('react'));
 	
-	ReactDOM.render(gridInstance, mountNode);
+	//ReactDOM.render(gridInstance, mountNode);
 	// end::render[]
 	
 	
@@ -397,6 +440,23 @@
 	//		</Col>
 	//    </Row>
 	//</Grid>
+	//
+	//<Table responsive>
+	//	<tbody>
+	//		<tr className="tr-100">
+	//			<td>사진</td>
+	//			<td>설명</td>
+	//		</tr>
+	//		<tr className="tr-100">
+	//			<td>사진</td>
+	//			<td>설명</td>
+	//		</tr>
+	//		<tr className="tr-100">
+	//			<td>사진</td>
+	//			<td>설명</td>
+	//		</tr>
+	//	</tbody>
+	//</Table>
 
 /***/ }),
 /* 1 */

@@ -1,5 +1,4 @@
 table {
-    border-collapse: collapse;
     width:100%;
 }
 
@@ -8,6 +7,13 @@ td {
     width:200px;
     font-size:20px;
 }
+
+.td-small {
+    text-align: center;
+    font-size:14px;
+    font-weight: bold;
+}
+
 th {
 	padding-left: 50px;
     padding: 1rem;
@@ -29,19 +35,22 @@ th {
 	width:100%;
 }
 
-.split-btn{
-	width:100px;
-}
 
 .split-btn-100{
 	width:100px;
+	background-color:"#FFFFFF";
+}
+
+.split-btn-150{
+	width:150px;
+	background-color:"#FFFFFF";
 }
 
 .split-btn-200{
 	width:200px;
+	background-color:"#FFFFFF";
+	
 }
-
-
 
 .filter{
 	padding-left: 50px;
