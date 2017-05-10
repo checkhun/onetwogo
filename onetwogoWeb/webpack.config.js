@@ -1,5 +1,4 @@
 var path = require('path');
-
 module.exports = {
     entry: './src/main/js/app.js',
     devtool: 'sourcemaps',
@@ -23,6 +22,10 @@ module.exports = {
                     presets: ['es2015', 'react']
                 }
             }
+            
         ]
     }
+    
+    
+    	
 };
