@@ -14,7 +14,10 @@ module.exports = {
             {
                 test: path.join(__dirname, '.'),
                 exclude: /(node_modules)/,
-                loader: 'babel',
+                loaders: ['react-hot-loader','babel-loader?' + JSON.stringify({
+                    cacheDirectory: true,
+                    presets: ['es2015', 'react']
+                })],
                 query: {
                     cacheDirectory: true,
                     presets: ['es2015', 'react']

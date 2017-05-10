@@ -100,12 +100,12 @@
 							<arguments>install</arguments>
 						</configuration>
 					</execution>
-					<execution>
+					<!-- <execution>
 						<id>webpack build</id>
 						<goals>
 							<goal>webpack</goal>
 						</goals>
-					</execution>
+					</execution> -->
 				</executions>
 			</plugin>
 		</plugins>
