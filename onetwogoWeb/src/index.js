@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactRouter from 'react-router';
-import App from './main/js/App';
+import Top from './main/js/layout/top';
+import Content from './main/js/layout/content';
 
 //import {createStore} from 'redux';
 //import reducers from './reducers';
@@ -12,7 +13,8 @@ import App from './main/js/App';
 
 ReactDOM.render( 
 	<div>
-    	<App/>
+    	<Top/>
+    	<Content/>
     </div>,
     document.getElementById('root')
 );
